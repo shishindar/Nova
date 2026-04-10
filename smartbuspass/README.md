@@ -32,6 +32,36 @@ A web application that digitizes bus pass management for educational institution
 
 6. **Open browser** — http://localhost:3000
 
+## Vercel Deployment
+
+This repo is now configured to deploy from the repository root on Vercel.
+
+Required environment variables:
+
+```bash
+SESSION_SECRET=your-long-random-secret
+USE_DUMMY_AUTH=true
+```
+
+Optional database mode:
+
+```bash
+USE_DUMMY_AUTH=false
+DB_HOST=
+DB_PORT=3306
+DB_USER=
+DB_PASSWORD=
+DB_NAME=smartbuspass
+GMAIL_USER=
+GMAIL_APP_PASSWORD=
+```
+
+Notes:
+
+- `USE_DUMMY_AUTH=true` is the safest default for a zero-config Vercel demo deploy.
+- Background cron jobs and the bus simulator only run in `server.js` for local/self-hosted mode, not in the Vercel serverless function.
+- Authentication on Vercel uses signed HTTP-only cookies instead of in-memory sessions, so login persists across serverless requests.
+
 ## Default Login Credentials
 
 | Role | Email | Password |
